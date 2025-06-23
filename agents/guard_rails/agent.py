@@ -16,7 +16,7 @@ You are a helpful agent that helps customers with their airline-related requests
 root_agent = LlmAgent(
     name="guardrails_example",
     model=LiteLlm(model=os.environ["GUARDRAILS_EXAMPLE_AGENT_MODEL"]),
-    description="A triage agent that can delegate a customer's request to the appropriate agent.",
+    description="A airline customer support agent.",
     instruction=_instruction_provider,
     before_model_callback=[
         run_relevance_guardrail_agent,
