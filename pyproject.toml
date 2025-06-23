@@ -1,0 +1,76 @@
+[project]
+name = "adk-recipes"
+version = "0.0.1"
+description = "Various ADK Recipes"
+readme = "README.md"
+authors = [
+    { name = "Sachdeva, Kapil"}
+]
+requires-python = ">=3.13"
+dependencies = [
+]
+
+classifiers = [
+  "Intended Audience :: Developers",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.13",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "License :: OSI Approved :: Apache Software License",
+]
+
+[project.urls]
+repository = "https://github.com/ksachdeva/adk-recipes"
+
+[tool.uv]
+dev-dependencies = [
+    "poethepoet>=0.30.0",
+    "packaging>=24.2",
+    "pyright>=1.1.378",
+    "mypy>=1.10.0",
+    "ruff>=0.4.8"
+]
+
+[tool.ruff]
+line-length = 120
+fix = true
+target-version = "py313"
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "Q", "I", "ASYNC", "T20"]
+ignore = ["F401", "E501"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"unittest".msg = "Use `pytest` instead."
+
+[tool.ruff.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "fastapi.params.Depends", "fastapi.Query", "fastapi.params.Query"]
+
+[tool.mypy]
+strict = true
+python_version = "3.13"
+ignore_missing_imports = true
+
+# from https://blog.wolt.com/engineering/2021/09/30/professional-grade-mypy-configuration/
+disallow_untyped_defs = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_return_any = true
+show_error_codes = true
+warn_unused_ignores = false
+
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+disallow_any_unimported = false
+
+[tool.pyright]
+include = ["src", "tests", "samples"]
+# typeCheckingMode = "strict"
+reportUnnecessaryIsInstance = false
+reportMissingTypeStubs = false
+
