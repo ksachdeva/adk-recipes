@@ -8,6 +8,9 @@ authors = [
 ]
 requires-python = ">=3.13"
 dependencies = [
+    "google-adk>=1.4.2",
+    "litellm>=1.73.0",
+    "pydantic>=2.11.7",
 ]
 
 classifiers = [
@@ -74,3 +77,10 @@ include = ["src", "tests", "samples"]
 reportUnnecessaryIsInstance = false
 reportMissingTypeStubs = false
 
+[tool.poe.tasks.adk-web]
+help = "Run the ADK web server"
+cmd = "adk web agents"
+
+[tool.poe.tasks.adk-cli]
+help = "Run the ADK web server"
+cmd = "adk run"
